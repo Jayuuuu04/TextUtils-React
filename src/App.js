@@ -32,8 +32,6 @@ function App() {
   };
   return (
     <>
-      {/* <Navbar title="textUtils" aboutText="About Us" /> */}
-      {/* <Navbar/> */}
       <Router>
         <Navbar title="textUtils" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />

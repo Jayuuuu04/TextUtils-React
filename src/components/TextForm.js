@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const handleUpClick = () => {
-    // console.log("Uppercase was clicked" + text);
     let newText = text.toUpperCase();
     setText(newText);
     props.showAlert("Converted to uppercase!", "success");
@@ -13,9 +12,7 @@ export default function TextForm(props) {
     props.showAlert("Converted to lowercase!", "success");
   };
   const handleOnChange = (event) => {
-    // console.log("On Change");
     setText(event.target.value);
-    
   };
   const [text, setText] = useState(" ");
   return (
@@ -38,10 +35,18 @@ export default function TextForm(props) {
             rows="8"
           ></textarea>
         </div>
-        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
+          onClick={handleUpClick}
+        >
           Convert to Upper Case
         </button>
-        <button disabled={text.length===0} className="btn btn-secondary mx-1 my-1" onClick={handleLoClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-secondary mx-1 my-1"
+          onClick={handleLoClick}
+        >
           Convert to Lower Case
         </button>
       </div>
@@ -52,19 +57,22 @@ export default function TextForm(props) {
       >
         <h2>Your Text Summary</h2>
         <p>
-          {text.split(/\s+/).filter((element) => {
-          return element.length !== 0
-        }).length} words and {text.trim().length} characters
+          {
+            text.split(/\s+/).filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          words and {text.trim().length} characters
         </p>
-        <p>{0.008 * text.split(" ").filter((element) => {
-          return element.length !== 0
-        }).length} Minutes Read</p>
-        <h3>Preview</h3>
         <p>
-          {text.length > 0
-            ? text
-            : "Nothing to preview"}
+          {0.008 *
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length}{" "}
+          Minutes Read
         </p>
+        <h3>Preview</h3>
+        <p>{text.length > 0 ? text : "Nothing to preview"}</p>
       </div>
     </>
   );
